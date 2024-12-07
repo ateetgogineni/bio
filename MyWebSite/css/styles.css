@@ -1,0 +1,91 @@
+/* General Reset */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: black;
+  color: white;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #222;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between; /* Evenly space the buttons */
+  gap: 20px; /* Adds space between the buttons */
+}
+
+.navbar button {
+  background-color: #555; /* Default color for the buttons */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+/* Home button specific default color */
+.navbar button#home-btn {
+  background-color: #3498db; /* Set a specific color for Home button */
+}
+
+/* Hover effect for buttons */
+.navbar button:hover {
+  background-color: #777;
+}
+
+/* Active button color */
+.navbar button.active {
+  background-color: #f39c12; /* Orange color for active button */
+  color: black;
+}
+
+main {
+  margin-top: 70px;
+  padding: 20px;
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+.fade-out {
+  animation: fadeOut 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* Add space between experience sections */
+ul li {
+  margin-bottom: 20px; /* Adds space between each experience item */
+}
+
+ul li ul {
+  margin-top: 10px; /* Adds space between the list inside each experience item */
+}
