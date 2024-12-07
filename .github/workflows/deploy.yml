@@ -25,7 +25,7 @@ jobs:
       run: npm run build  # Use the build command for your website (if you're using a build tool)
 
     - name: Deploy to GitHub Pages
-      uses: JamesIves/github-pages-deploy-action@v4.1.0
+      uses: JamesIves/github-pages-deploy-action@v4  # Use the latest stable version of the action
       with:
         branch: gh-pages  # The branch GitHub Pages will use to serve the site
         folder: build  # The folder to deploy (adjust if your build output is different)
