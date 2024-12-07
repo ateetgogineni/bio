@@ -21,7 +21,10 @@ function removeActiveClass() {
 document.getElementById("home-btn").addEventListener("click", function () {
   removeActiveClass(); // Remove active class from all buttons
   this.classList.add("active"); // Add active class to the clicked button
-
+  
+  // Add home-page class to body to set the background
+  document.body.classList.add('home-page');
+  
   const homeContent = `
     <div id="home-section">
       <h1>Hi, I'm Gogineni Venkata Ateet</h1>
@@ -93,26 +96,25 @@ document.getElementById("resume-btn").addEventListener("click", function () {
   this.classList.add("active"); // Add active class to the clicked button
 
   const resumeContent = `
-  <h2>Resume</h2>
-  <p><strong>Email:</strong> ateetgogeneni@outlook.com</p>
-  <p><strong>Phone:</strong> (+91) 9618325678</p>
-  <p><strong>LinkedIn:</strong> <a href="#" target="_blank">venkata-ateet-gogineni</a></p>
-  <h3>Education</h3>
-  <p>Bachelor of Technology in Computer Science,</p>
-  <p>Malla Reddy College Of Engineering and Technology, Hyderabad (2021)</p>
-  <h3>GitHub</h3>
-  <p><a href="https://github.com/ateetgogineni?tab=repositories" target="_blank">
-      <button style="padding: 10px 20px; background-color: #f39c12; border: none; border-radius: 10px; color: black; cursor: pointer;">
-        View My GitHub Repositories
-      </button>
-    </a>
-  </p>
-  <h3>Download Resume</h3>
-  <p><a href="assets/Gogineni_Venkata_Ateet_Resume_1.pdf" download>
-      <button style="padding: 10px 20px; background-color: #f39c12; border: none; border-radius: 10px; color: black; cursor: pointer;">
-        Download My Resume (PDF)
-      </button>
-    </a>
-  </p>`;
-changeContent(resumeContent);
+    <h2>Resume</h2>
+    <p><strong>Email:</strong> ateetgogeneni@outlook.com</p>
+    <p><strong>Phone:</strong> (+91) 9618325678</p>
+    <p><strong>LinkedIn:</strong> <a href="#" target="_blank">venkata-ateet-gogineni</a></p>
+    <h3>Education</h3>
+    <p>Bachelor of Technology in Computer Science, Malla Reddy College Of Engineering and Technology, Hyderabad (2021)</p>
+    <h3>GitHub</h3>
+    <p><a href="https://github.com/ateetgogineni?tab=repositories" target="_blank">
+        <button style="padding: 10px 20px; background-color: #f39c12; border: none; border-radius: 10px; color: black; cursor: pointer;">
+          View My GitHub Repositories
+        </button>
+      </a>
+    </p>
+    <h3>Download Resume</h3>
+    <p><a href="assets/Gogineni_Venkata_Ateet_Resume_1.pdf" download>
+        <button style="padding: 10px 20px; background-color: #f39c12; border: none; border-radius: 10px; color: black; cursor: pointer;">
+          Download My Resume (PDF)
+        </button>
+      </a>
+    </p>`;
+  changeContent(resumeContent);
 });
