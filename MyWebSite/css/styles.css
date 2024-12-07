@@ -3,28 +3,35 @@ body, html {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
-  background-color: black;
+  background-color: #1e1e1e; /* Fallback background color */
   color: white;
+  background-image: url('assets/developer-background.jpg'); /* Path to your background image */
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed; /* Keep the background fixed while scrolling */
+  height: 100%;
 }
 
+/* Header (navbar) styles */
 header {
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: #222;
+  background-color: rgba(34, 34, 34, 0.8); /* Dark, semi-transparent header */
   display: flex;
   justify-content: space-around;
   padding: 10px 0;
+  z-index: 1000; /* Ensure navbar stays on top */
 }
 
 .navbar {
   display: flex;
-  justify-content: space-between; /* Evenly space the buttons */
-  gap: 20px; /* Adds space between the buttons */
+  justify-content: space-between;
+  gap: 20px;
 }
 
 .navbar button {
-  background-color: #555; /* Default color for the buttons */
+  background-color: #555;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -34,11 +41,6 @@ header {
   transition: all 0.3s ease;
 }
 
-/* Home button specific default color */
-.navbar button#home-btn {
-  background-color: #3498db; /* Set a specific color for Home button */
-}
-
 /* Hover effect for buttons */
 .navbar button:hover {
   background-color: #777;
@@ -46,13 +48,104 @@ header {
 
 /* Active button color */
 .navbar button.active {
-  background-color: #f39c12; /* Orange color for active button */
+  background-color: #f39c12;
   color: black;
 }
 
 main {
   margin-top: 70px;
   padding: 20px;
+  z-index: 999;
+}
+
+/* Professional Experience Section */
+h2 {
+  font-size: 2em;
+  color: #f39c12; /* Colorful heading */
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+ul li {
+  background-color: #2c3e50; /* Dark background for each job */
+  margin-bottom: 20px; /* Adds space between each job */
+  padding: 15px;
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+}
+
+ul li:hover {
+  background-color: #34495e; /* Lighter shade on hover */
+}
+
+ul li strong {
+  color: #f39c12; /* Yellow color for job titles */
+  font-size: 1.3em;
+}
+
+ul li ul {
+  margin-top: 10px;
+  padding-left: 20px;
+}
+
+ul li ul li {
+  color: #ecf0f1; /* Light text color for responsibilities */
+  font-size: 1em;
+}
+
+ul li ul li:before {
+  content: "• "; /* Add bullet points before each responsibility */
+  color: #f39c12; /* Bullet color */
+}
+
+main p, h3 {
+  color: #ecf0f1; /* Light color for paragraph text */
+}
+
+/* Home Section */
+#home-section {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.6); /* Dark transparent background */
+  padding: 40px;
+  border-radius: 15px;
+  width: 60%;
+  max-width: 800px;
+}
+
+#home-section h1 {
+  font-size: 3em;
+  margin-bottom: 20px;
+  color: #f39c12; /* Bright color for the heading */
+}
+
+#home-section p {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+#home-section .cta-button {
+  background-color: #f39c12;
+  color: black;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1.2em;
+  transition: background-color 0.3s ease;
+}
+
+#home-section .cta-button:hover {
+  background-color: #e67e22; /* Darker shade of orange on hover */
 }
 
 .fade-in {
@@ -81,11 +174,3 @@ main {
   }
 }
 
-/* Add space between experience sections */
-ul li {
-  margin-bottom: 20px; /* Adds space between each experience item */
-}
-
-ul li ul {
-  margin-top: 10px; /* Adds space between the list inside each experience item */
-}

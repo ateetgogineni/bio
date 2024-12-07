@@ -24,11 +24,13 @@ document.getElementById("home-btn").addEventListener("click", function () {
 
   const homeContent = `
     <div id="home-section">
-      <h1>Welcome to My Portfolio</h1>
+      <h1>Hi, I'm Gogineni Venkata Ateet</h1>
       <p>
-        Hi, I'm Gogineni Venkata Ateet, a passionate <strong>Game Developer</strong> and <strong>React Native Developer</strong>. 
-        I specialize in creating engaging 2D games using Unity and developing high-performance cross-platform mobile applications.
+        A passionate <strong>Game Developer</strong> and <strong>React Native Developer</strong> focused on building immersive experiences and cross-platform applications.
       </p>
+      <a href="#projects-section">
+        <button class="cta-button">View My Projects</button>
+      </a>
     </div>`;
   changeContent(homeContent);
 });
@@ -76,7 +78,7 @@ document.getElementById("projects-btn").addEventListener("click", function () {
   this.classList.add("active"); // Add active class to the clicked button
 
   const projectsContent = `
-    <h2>Key Projects</h2>
+    <h2>My Projects</h2>
     <ul>
       <li><strong>Clash:</strong> React Native app with real-time updates and payment gateway integration.</li>
       <li><strong>Rummy:</strong> Unity-based interactive game optimized for mobile platforms.</li>
@@ -91,23 +93,26 @@ document.getElementById("resume-btn").addEventListener("click", function () {
   this.classList.add("active"); // Add active class to the clicked button
 
   const resumeContent = `
-    <h2>Resume</h2>
-    <p><strong>Email:</strong> ateetgogeneni@outlook.com</p>
-    <p><strong>Phone:</strong> (+91) 9618325678</p>
-    <p><strong>LinkedIn:</strong> <a href="#" target="_blank">venkata-ateet-gogineni</a></p>
-    <h3>Education</h3>
-    <p>Bachelor of Technology in Computer Science, Malla Reddy College Of Engineering and Technology, Hyderabad (2021)</p>
-    <h3>Certifications</h3>
-    <ul>
-      <li>Unity Certified Associate, 2023</li>
-      <li>Unreal Engine Developer Course, 2022</li>
-    </ul>
-    <h3>Download Resume</h3>
-    <p><a href="assets/Gogineni_Venkata_Ateet_Resume_1.pdf" download>
-        <button style="padding: 10px 20px; background-color: #f39c12; border: none; border-radius: 10px; color: black; cursor: pointer;">
-          Download My Resume (PDF)
-        </button>
-      </a>
-    </p>`;
-  changeContent(resumeContent);
+  <h2>Resume</h2>
+  <p><strong>Email:</strong> ateetgogeneni@outlook.com</p>
+  <p><strong>Phone:</strong> (+91) 9618325678</p>
+  <p><strong>LinkedIn:</strong> <a href="#" target="_blank">venkata-ateet-gogineni</a></p>
+  <h3>Education</h3>
+  <p>Bachelor of Technology in Computer Science,</p>
+  <p>Malla Reddy College Of Engineering and Technology, Hyderabad (2021)</p>
+  <h3>GitHub</h3>
+  <p><a href="https://github.com/ateetgogineni?tab=repositories" target="_blank">
+      <button style="padding: 10px 20px; background-color: #f39c12; border: none; border-radius: 10px; color: black; cursor: pointer;">
+        View My GitHub Repositories
+      </button>
+    </a>
+  </p>
+  <h3>Download Resume</h3>
+  <p><a href="assets/Gogineni_Venkata_Ateet_Resume_1.pdf" download>
+      <button style="padding: 10px 20px; background-color: #f39c12; border: none; border-radius: 10px; color: black; cursor: pointer;">
+        Download My Resume (PDF)
+      </button>
+    </a>
+  </p>`;
+changeContent(resumeContent);
 });
