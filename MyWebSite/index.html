@@ -33,6 +33,9 @@
       document.getElementById('main-title').textContent = `Hi, I'm ${websiteData.personal.name}`;
       document.getElementById('main-designation').textContent = websiteData.personal.currentDesignation;
       document.getElementById('main-description').innerHTML = websiteData.personal.description;
+      
+      // Set initial overflow for home page
+      document.body.style.overflow = 'hidden';
     });
   </script>
 </body>

@@ -11,8 +11,15 @@ function changeContent(newContent, backgroundClass = null) {
     if (backgroundClass) {
       document.body.classList.remove('home-page', 'resume-page');
       document.body.classList.add(backgroundClass);
+      // Enable scrolling for home page only, disable for others if needed
+      if (backgroundClass === 'home-page') {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = 'auto';
+      }
     } else {
       document.body.classList.remove('home-page', 'resume-page');
+      document.body.style.overflow = 'auto';
     }
     
     content.classList.remove("fade-out");
@@ -69,7 +76,7 @@ document.getElementById("projects-btn").addEventListener("click", function () {
     <h2>${websiteData.projects.title}</h2>
     <div>
       ${websiteData.projects.projectList.map(project => `
-        <div style="background-color: #2c3e50; margin-bottom: 25px; padding: 20px; border-radius: 10px; transition: background-color 0.3s ease;">
+        <div class="project-card" style="background-color: #2c3e50; margin-bottom: 25px; padding: 20px; border-radius: 10px; transition: background-color 0.3s ease;">
           <h3 style="color: #f39c12; font-size: 1.4em; margin-bottom: 10px;">
             ${project.name}
             ${project.links && project.links.length > 0 ? 
