@@ -50,10 +50,16 @@ header {
 
 /* Home Section Specific Background */
 body.home-page {
-  background-image: url('assets/home_bg.webp'); /* Path to your Home Page background image */
+  background-image: url('../assets/home_bg.webp'); /* Path to your Home Page background image */
   background-size: cover;
   background-position: center center;
   background-attachment: fixed; /* Keep the background fixed while scrolling */
+}
+
+/* Resume Section Specific Background */
+body.resume-page {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background-attachment: fixed;
 }
 
 /* Home Section */
@@ -64,11 +70,17 @@ body.home-page {
   transform: translate(-50%, -50%);
   text-align: center;
   color: white;
-  background-color: rgba(0, 0, 0, 0.6); /* Dark transparent background */
+  background-color: rgba(0, 0, 0, 0.8); /* Darker transparent background for better readability */
   padding: 40px;
   border-radius: 15px;
-  width: 60%;
-  max-width: 800px;
+  width: 70%;
+  max-width: 900px;
+  backdrop-filter: blur(5px); /* Add subtle blur effect for modern look */
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border for definition */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 #home-section h1 {
@@ -79,7 +91,15 @@ body.home-page {
 
 #home-section p {
   font-size: 1.2em;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
+  line-height: 1.6;
+  text-align: center;
+  max-width: 100%;
+}
+
+#home-section h2 {
+  margin: 10px 0 20px 0;
+  text-align: center;
 }
 
 #home-section .cta-button {
@@ -98,7 +118,7 @@ body.home-page {
 }
 
 main {
-  margin-top: 150px; /* Ensure content doesn't overlap navbar */
+  margin-top: 80px; /* Reduced gap between navbar and content */
   padding: 20px;
   z-index: 999;
 }

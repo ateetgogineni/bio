@@ -6,10 +6,10 @@
   <title>My Portfolio</title>
   <link rel="stylesheet" href="css/styles.css">
 </head>
-<body>
+<body class="home-page">
   <header>
     <div class="navbar">
-      <button id="home-btn">Home</button>
+      <button id="home-btn" class="active">Home</button>
       <button id="experience-btn">Experience</button>
       <button id="projects-btn">Real Time Projects</button>
       <button id="resume-btn">Resume</button>
@@ -17,17 +17,23 @@
   </header>
   <main id="content" class="fade-in">
     <div id="home-section">
-      <h1>Hi, I'm Gogineni Venkata Ateet</h1>
-      <p>
+      <h1 id="main-title">Hi, I'm Gogineni Venkata Ateet</h1>
+      <h2 id="main-designation" style="color: #f39c12; font-size: 1.5em; margin-bottom: 20px;">Software Engineer</h2>
+      <p id="main-description">
         A passionate <strong>Game Developer</strong> and <strong>React Native Developer</strong> focused on building immersive experiences and cross-platform applications.
       </p>
-      <!-- View My Projects button with the link to GitHub repositories -->
-      <a href="https://github.com/ateetgogineni?tab=repositories" target="_blank">
-        <button class="cta-button">View My Projects</button>
-      </a>
     </div>
   </main>
 
+  <script src="js/data.js"></script>
   <script src="js/script.js"></script>
+  <script>
+    // Initialize page content with data
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('main-title').textContent = `Hi, I'm ${websiteData.personal.name}`;
+      document.getElementById('main-designation').textContent = websiteData.personal.currentDesignation;
+      document.getElementById('main-description').innerHTML = websiteData.personal.description;
+    });
+  </script>
 </body>
 </html>

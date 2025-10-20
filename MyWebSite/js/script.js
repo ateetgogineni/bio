@@ -1,11 +1,20 @@
 // Function to change content with fade effect
-function changeContent(newContent) {
+function changeContent(newContent, backgroundClass = null) {
   const content = document.getElementById("content");
   content.classList.remove("fade-in");
   content.classList.add("fade-out");
 
   setTimeout(() => {
     content.innerHTML = newContent;
+    
+    // Handle background class changes during transition
+    if (backgroundClass) {
+      document.body.classList.remove('home-page', 'resume-page');
+      document.body.classList.add(backgroundClass);
+    } else {
+      document.body.classList.remove('home-page', 'resume-page');
+    }
+    
     content.classList.remove("fade-out");
     content.classList.add("fade-in");
   }, 500); // Match fade-out duration in CSS
@@ -22,20 +31,15 @@ document.getElementById("home-btn").addEventListener("click", function () {
   removeActiveClass(); // Remove active class from all buttons
   this.classList.add("active"); // Add active class to the clicked button
   
-  // Add home-page class to body to set the background
-  document.body.classList.add('home-page');
-  
   const homeContent = `
     <div id="home-section">
-      <h1>Hi, I'm Gogineni Venkata Ateet</h1>
+      <h1>Hi, I'm ${websiteData.personal.name}</h1>
+      <h2 style="color: #f39c12; font-size: 1.5em; margin-bottom: 20px;">${websiteData.personal.currentDesignation}</h2>
       <p>
-        A passionate <strong>Game Developer</strong> and <strong>React Native Developer</strong> focused on building immersive experiences and cross-platform applications.
+        ${websiteData.personal.description}
       </p>
-      <a href="#projects-section">
-        <button class="cta-button">View My Projects</button>
-      </a>
     </div>`;
-  changeContent(homeContent);
+  changeContent(homeContent, 'home-page');
 });
 
 document.getElementById("experience-btn").addEventListener("click", function () {
@@ -43,35 +47,16 @@ document.getElementById("experience-btn").addEventListener("click", function () 
   this.classList.add("active"); // Add active class to the clicked button
 
   const experienceContent = `
-    <h2>Professional Experience</h2>
+    <h2>${websiteData.experience.title}</h2>
     <ul>
-      <li>
-        <strong>Associate Game Developer</strong> - PurpleTalk, Hyderabad (11/2023 – Present)
-        <ul>
-          <li>Designed and developed engaging 2D games using Unity, incorporating animations, sound effects, and interactive gameplay mechanics.</li>
-          <li>Led build size optimization efforts, reducing game build size by up to 30% through advanced asset management and compression techniques.</li>
-          <li>Implemented interactive features such as leaderboards, achievements, and in-app purchases, enhancing player retention and engagement.</li>
-          <li>Worked closely with the design team to ensure seamless integration of visual and gameplay elements.</li>
-          <li>Used performance profiling tools to identify bottlenecks and optimize memory usage for stable performance on low-end devices.</li>
-        </ul>
-      </li>
-      <li>
-        <strong>Trainee Game Developer</strong> - PurpleTalk, Hyderabad (07/2022 – 11/2023)
-        <ul>
-          <li>Contributed to the development of 2D games using Unity, focusing on gameplay logic, animations, and UI/UX elements.</li>
-          <li>Collaborated in an Agile development environment to meet project deadlines and deliver polished game features.</li>
-          <li>Assisted in debugging and resolving performance issues, ensuring smooth gameplay across devices.</li>
-          <li>Created reusable code modules and tools to improve development efficiency for future projects.</li>
-        </ul>
-      </li>
-      <li>
-        <strong>Intern</strong> - PurpleTalk, Hyderabad (01/2022 – 06/2022)
-        <ul>
-          <li>Gained hands-on experience with Unity and game development fundamentals by supporting the team in asset management and prototyping game features.</li>
-          <li>Assisted in testing and optimizing game performance during the development cycle.</li>
-          <li>Documented workflows and processes to streamline the team's development practice.</li>
-        </ul>
-      </li>
+      ${websiteData.experience.jobs.map(job => `
+        <li>
+          <strong>${job.position}</strong> - ${job.company} (${job.duration})
+          <ul>
+            ${job.responsibilities.map(responsibility => `<li>${responsibility}</li>`).join('')}
+          </ul>
+        </li>
+      `).join('')}
     </ul>`;
   changeContent(experienceContent);
 });
@@ -81,13 +66,26 @@ document.getElementById("projects-btn").addEventListener("click", function () {
   this.classList.add("active"); // Add active class to the clicked button
 
   const projectsContent = `
-    <h2>My Projects</h2>
-    <ul>
-      <li><strong>Clash:</strong> React Native app with real-time updates and payment gateway integration.</li>
-      <li><strong>Rummy:</strong> Unity-based interactive game optimized for mobile platforms.</li>
-      <li><strong>GamePe:</strong> Hybrid app combining Unity and React Native for real-time interactions.</li>
-      <li><strong>Slot Stream:</strong> Live-streamed slot gaming platform with social interaction features.</li>
-    </ul>`;
+    <h2>${websiteData.projects.title}</h2>
+    <div>
+      ${websiteData.projects.projectList.map(project => `
+        <div style="background-color: #2c3e50; margin-bottom: 25px; padding: 20px; border-radius: 10px; transition: background-color 0.3s ease;">
+          <h3 style="color: #f39c12; font-size: 1.4em; margin-bottom: 10px;">
+            ${project.name}
+            ${project.links && project.links.length > 0 ? 
+              project.links.map(link => `<a href="${link.url}" target="_blank" style="margin-left: 10px; color: #3498db; text-decoration: none; font-size: 0.8em;">[${link.name}]</a>`).join('') 
+              : ''
+            }
+          </h3>
+          <p style="color: #ecf0f1; margin-bottom: 15px; font-size: 1.1em;">${project.description}</p>
+          ${project.details && project.details.length > 0 ? `
+            <ul style="margin-top: 10px; padding-left: 20px;">
+              ${project.details.map(detail => `<li style="color: #bdc3c7; margin-bottom: 8px;">${detail}</li>`).join('')}
+            </ul>
+          ` : ''}
+        </div>
+      `).join('')}
+    </div>`;
   changeContent(projectsContent);
 });
 
@@ -96,25 +94,13 @@ document.getElementById("resume-btn").addEventListener("click", function () {
   this.classList.add("active"); // Add active class to the clicked button
 
   const resumeContent = `
-    <h2>Resume</h2>
-    <p><strong>Email:</strong> ateetgogeneni@outlook.com</p>
-    <p><strong>Phone:</strong> (+91) 9618325678</p>
-    <p><strong>LinkedIn:</strong> <a href="#" target="_blank">venkata-ateet-gogineni</a></p>
-    <h3>Education</h3>
-    <p>Bachelor of Technology in Computer Science, Malla Reddy College Of Engineering and Technology, Hyderabad (2021)</p>
-    <h3>GitHub</h3>
-    <p><a href="https://github.com/ateetgogineni?tab=repositories" target="_blank">
-        <button style="padding: 10px 20px; background-color: #f39c12; border: none; border-radius: 10px; color: black; cursor: pointer;">
-          View My GitHub Repositories
+    <div style="text-align: center; padding: 50px 20px;">
+      <p style="color: #ecf0f1; font-size: 1.2em; margin-bottom: 40px;">Download my complete resume to know more about my experience and skills.</p>
+      <a href="${websiteData.resume.resumeFile}" download>
+        <button style="padding: 15px 30px; background-color: #f39c12; border: none; border-radius: 10px; color: black; cursor: pointer; font-size: 1.2em; transition: background-color 0.3s ease;" onmouseover="this.style.backgroundColor='#e67e22'" onmouseout="this.style.backgroundColor='#f39c12'">
+          ${websiteData.buttons.downloadResume}
         </button>
       </a>
-    </p>
-    <h3>Download Resume</h3>
-    <p><a href="assets/Gogineni_Venkata_Ateet_Resume_1.pdf" download>
-        <button style="padding: 10px 20px; background-color: #f39c12; border: none; border-radius: 10px; color: black; cursor: pointer;">
-          Download My Resume (PDF)
-        </button>
-      </a>
-    </p>`;
-  changeContent(resumeContent);
+    </div>`;
+  changeContent(resumeContent, 'resume-page');
 });
